@@ -222,7 +222,7 @@ function App() {
                 className="range-input"
                 type="range"
                 min="12"
-                max="80"
+                max="250"
                 step="1"
                 value={speed}
                 aria-label="Lesetempo in Wörtern pro Minute"
