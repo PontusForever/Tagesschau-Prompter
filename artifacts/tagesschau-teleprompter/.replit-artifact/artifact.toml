@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Teleprompter"
+description = "A simple, self-hostable browser teleprompter with adjustable scrolling, two-step start, pause/resume, and fullscreen."
+version = "1.0.0"
+id = "artifacts/tagesschau-teleprompter"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19481
+
+[services.development]
+run = "pnpm --filter @workspace/tagesschau-teleprompter run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/tagesschau-teleprompter", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/tagesschau-teleprompter/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19481"
+BASE_PATH = "/"
